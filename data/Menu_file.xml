@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--dimensions and textures-->
+<MenuState
+        BackgroundTexture="\IMG\background.png"
+        BlockTexture1="\IMG\block01"       
+        BlockTexture2="\IMG\block02"
+        BlockTexture3="\IMG\block03"
+        BlockTexture4="\IMG\block04">
+    
+</MenuState>

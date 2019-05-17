@@ -1,5 +1,5 @@
 #include "..\\Menagers\Include\AssetMenager.h"
-#include <iostream>
+
 AssetMenager::AssetMenager()
 {
 }
@@ -9,32 +9,24 @@ AssetMenager::~AssetMenager()
 {
 }
 
-void AssetMenager::LoadTexture(const std::string& name,const std::string& fileName)
+void AssetMenager::LoadInitParameters(const std::string& filename)
 {
-	sf::Texture tempTexture;
-	if(!tempTexture.loadFromFile(fileName))
+	tinyxml2::XMLDocument doc;
+	doc.LoadFile(filename.c_str());
+	if(doc.ErrorID)
 	{
 		throw X();
 	}
-	else
-	{
-		_mapTexture[name] = tempTexture;
-	}
-
+	tinyxml2::XMLElement* el = doc.FirstChildElement("Menustate");
 }
 
-void AssetMenager::LoadFont(std::string& name, std::string& fileName)
+void AssetMenager::LoadBrickTextures(tinyxml2::XMLElement* file, BrickTypes type)
 {
-	sf::Font tempFont;
-	if(!tempFont.loadFromFile(fileName))
-	{
-		throw X();
-	}
-	else
-	{
-		_mapFonts[name] = tempFont;
-	}
+	const char* texture;
+	tinyxml2::XMLElement* xmlBricks = file->FirstChildElement("MenuState");
+
 }
+
 
 sf::Texture& AssetMenager::GetTexture(const std::string& name)
 {

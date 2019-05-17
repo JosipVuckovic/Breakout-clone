@@ -12,4 +12,6 @@
 #define PLAY_BUTTON "data/image/PlayButton.png"
 #define BOARD_SPRITE "data/image/board.png"
 #define PIECE_TEXTURE "data/image/tiles.png"
+
+#define XML_INIT_LOAD "data/Menu_file.xml"
 #endif
