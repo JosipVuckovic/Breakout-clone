@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Source\Brick.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menagers\Source\AssetMenager.cpp" />
     <ClCompile Include="Menagers\Source\InputMenager.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="State engine\Source\StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Include\Brick.h" />
     <ClInclude Include="Menagers\Include\AssetMenager.h" />
     <ClInclude Include="Menagers\Include\Definitions.h" />
     <ClInclude Include="Menagers\Include\InputMenager.h" />

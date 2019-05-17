@@ -1,5 +1,4 @@
 #include "..\\Menagers\Include\InputMenager.h"
-
 InputMenager::InputMenager()
 {
 }

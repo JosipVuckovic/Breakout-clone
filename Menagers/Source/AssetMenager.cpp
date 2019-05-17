@@ -1,5 +1,5 @@
 #include "..\\Menagers\Include\AssetMenager.h"
-
+#include <iostream>
 AssetMenager::AssetMenager()
 {
 }
@@ -14,7 +14,7 @@ void AssetMenager::LoadTexture(const std::string& name,const std::string& fileNa
 	sf::Texture tempTexture;
 	if(!tempTexture.loadFromFile(fileName))
 	{
-		throw std::runtime_error("Unable to load texture: " + fileName);
+		throw X();
 	}
 	else
 	{
@@ -28,7 +28,7 @@ void AssetMenager::LoadFont(std::string& name, std::string& fileName)
 	sf::Font tempFont;
 	if(!tempFont.loadFromFile(fileName))
 	{
-		throw std::runtime_error("Unable to load Font: " + fileName);
+		throw X();
 	}
 	else
 	{

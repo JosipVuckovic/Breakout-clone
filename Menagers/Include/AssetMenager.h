@@ -4,6 +4,7 @@
 #include <array>
 #include <string>
 #include <SFML/Graphics.hpp>
+class X { public: void err() { std::cout << "Unable to load file"; } };
 
 class AssetMenager
 {
