@@ -14,7 +14,7 @@ MenuState::~MenuState()
 void MenuState::Init()
 {
 
-	data->assets.LoadTexture("Background", BACKGROUND);
+	//data->assets.LoadTexture("Background", BACKGROUND);
 	backgroundSprite.setTexture(data->assets.GetTexture("Background"));
 }
 

@@ -15,27 +15,30 @@ GameState::~GameState()
 
 void GameState::Init()
 {
-	data->assets.LoadTexture("Background", BACKGROUND);
-	data->assets.LoadTexture("RedBlock", RED);
-	data->assets.LoadTexture("BlueBlock", BLUE);
-	data->assets.LoadTexture("GreenBlock", GREEN);
-	data->assets.LoadTexture("CyanBlock", CYAN);
+	data->assets.LoadTexturesFromXml();
+
+	//data->assets.LoadTexture("Background", BACKGROUND);
+	//data->assets.LoadTexture("RedBlock", RED);
+	//data->assets.LoadTexture("BlueBlock", BLUE);
+	//data->assets.LoadTexture("GreenBlock", GREEN);
+	//data->assets.LoadTexture("CyanBlock", CYAN);
 
 
 	BackgroundSprite.setTexture(data->assets.GetTexture("Background"));
 
-	brickC->CreateRedBrick(data->assets.GetTexture("RedBlock"), 1);
+	brickC->CreateRedBrick(data->assets.GetTexture("Red"), 1);
 	
-	brickC->CreateBlueBrick(data->assets.GetTexture("BlueBlock"), 2);
-	brickC->CreateBlueBrick(data->assets.GetTexture("BlueBlock"), 3);
+	brickC->CreateBlueBrick(data->assets.GetTexture("Blue"), 2);
+	brickC->CreateBlueBrick(data->assets.GetTexture("Blue"), 3);
 
-	brickC->CreateGreenBrick(data->assets.GetTexture("GreenBlock"), 4);
-	brickC->CreateGreenBrick(data->assets.GetTexture("GreenBlock"), 5);
-	brickC->CreateGreenBrick(data->assets.GetTexture("GreenBlock"), 6);
-	brickC->CreateCyanBrick(data->assets.GetTexture("CyanBlock"), 7);
-	brickC->CreateCyanBrick(data->assets.GetTexture("CyanBlock"), 8);
-	brickC->CreateCyanBrick(data->assets.GetTexture("CyanBlock"), 9);
-	brickC->CreateCyanBrick(data->assets.GetTexture("CyanBlock"), 10);
+	brickC->CreateGreenBrick(data->assets.GetTexture("Green"), 4);
+	brickC->CreateGreenBrick(data->assets.GetTexture("Green"), 5);
+	brickC->CreateGreenBrick(data->assets.GetTexture("Green"), 6);
+
+	brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), 7);
+	brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), 8);
+	brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), 9);
+	brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), 10);
 
 }
 

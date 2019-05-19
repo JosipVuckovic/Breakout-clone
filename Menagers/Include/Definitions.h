@@ -16,4 +16,6 @@
 #define CYAN "IMG/cyan.png"
 #define RED "IMG/red.png"
 
+
+#define XML_FILE "GameDefinition.xml"
 #endif

@@ -159,6 +159,7 @@
     <ClCompile Include="State engine\Source\IntroState.cpp" />
     <ClCompile Include="State engine\Source\MenuState.cpp" />
     <ClCompile Include="State engine\Source\StateMachine.cpp" />
+    <ClCompile Include="tinyxml2\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Include\Brick.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="State engine\Include\MenuState.h" />
     <ClInclude Include="State engine\Include\State.h" />
     <ClInclude Include="State engine\Include\StateMachine.h" />
+    <ClInclude Include="tinyxml2\tinyxml2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

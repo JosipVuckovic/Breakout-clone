@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Game>
+  <GameAssets>
+    <BrickType Texture="IMG/red.png" />
+    <BrickType Texture="IMG/cyan.png" />
+    <BrickType Texture="IMG/green.png" />
+    <BrickType Texture="IMG/blue.png"/>
+    <MapType Map= 
+    "RRRRRRRRRRR
+     BBBBBBBBBBB
+     GGGGGGGGGGG
+     GGGGGGGGGGG
+     CCCCCCCCCCC
+     CCCCCCCCCCC"/>
+     <MapTexture ="IMG/background.jpg">
+  </GameAssets>
+</Game>
