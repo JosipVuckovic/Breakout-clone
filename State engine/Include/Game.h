@@ -7,7 +7,6 @@
 
 
 #include "..\\Menagers\Include\AssetMenager.h"
-#include "..\\Menagers\Include\InputMenager.h"
 #include "..\\State engine\Include\StateMachine.h"
 
 struct GameData
@@ -15,7 +14,7 @@ struct GameData
 	StateMachine machine;
 	sf::RenderWindow window;
 	AssetMenager assets;
-	InputMenager input;
+	
 };
 typedef std::shared_ptr<GameData> GameDataRef;
 class Game

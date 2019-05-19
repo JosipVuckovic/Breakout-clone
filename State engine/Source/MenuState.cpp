@@ -7,7 +7,6 @@ MenuState::MenuState(GameDataRef data): data(data)
 {
 }
 
-
 MenuState::~MenuState()
 {
 }
@@ -15,38 +14,30 @@ MenuState::~MenuState()
 void MenuState::Init()
 {
 
-	data->assets.LoadTexture("PlayButton", PLAY_BUTTON);
-	data->assets.LoadTexture("initBackground", INIT_STATE_BACKGROUND);
-
-
-	backgroundSprite.setTexture(data->assets.GetTexture("initBackground"));
-	playButton.setTexture(data->assets.GetTexture("PlayButton"));
-
-	playButton.setPosition(SCREEN_WIDTH /2-(playButton.getGlobalBounds().width/2),
-		0);
+	data->assets.LoadTexture("Background", BACKGROUND);
+	backgroundSprite.setTexture(data->assets.GetTexture("Background"));
 }
 
 void MenuState::HandleInput()
 {
-	sf::Event Tetris;
-	while (data->window.pollEvent(Tetris))
+	sf::Event Event;
+	while (data->window.pollEvent(Event))
 	{
-		if (sf::Event::Closed == Tetris.type)
+		
+		if (sf::Event::Closed == Event.type)
 			data->window.close();
-		if (data->input.IsSpriteClicked(playButton, sf::Mouse::Left, data->window))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 			data->machine.AddState((StateRef)new GameState(data), true);
 	}
 }
 
 void MenuState::Update(const float& deltaTime)
 {
-
 }
 
 void MenuState::Draw(const float& DeltaTime)
 {
 	data->window.clear();
 	data->window.draw(backgroundSprite);
-	data->window.draw(playButton);
 	data->window.display();
 }

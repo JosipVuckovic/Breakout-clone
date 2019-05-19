@@ -3,12 +3,14 @@
 
 #include "State.h"
 #include "Game.h"
-
+#include "BrickCreator.h"
 class GameState :
 	public State
 {
 	GameDataRef data;
 	sf::Clock clock;
+	sf::Sprite BackgroundSprite;
+	BrickCreator* brickC;
 public:
 	GameState(GameDataRef data);
 	~GameState();
@@ -16,5 +18,11 @@ public:
 	virtual void HandleInput()override;
 	virtual void Update(const float& deltaTime)override;
 	virtual void Draw(const float& DeltaTime)override;
+	
+protected:
+	void CreateRedBrick(sf::Texture& texture, int i, int j);
+	void CreateBlueBrick(sf::Texture& texture, int i, int j);
+	void CreateCyanBrick(sf::Texture& texture, int i, int j);
+	void CreateGreenBrick(sf::Texture& texture, int i, int j);
 };
 #endif

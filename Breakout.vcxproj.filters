@@ -33,16 +33,13 @@
     <ClCompile Include="Menagers\Source\AssetMenager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menagers\Source\InputMenager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="State engine\Source\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Source\Brick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TinyXml\tinyxml2.cpp">
+    <ClCompile Include="State engine\Source\BrickCreator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,16 +65,13 @@
     <ClInclude Include="Menagers\Include\Definitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menagers\Include\InputMenager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="State engine\Include\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game\Include\Brick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TinyXml\tinyxml2.h">
+    <ClInclude Include="State engine\Include\BrickCreator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

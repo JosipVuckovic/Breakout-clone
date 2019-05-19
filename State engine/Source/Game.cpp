@@ -1,6 +1,5 @@
-#include "Game.h"
-
-#include "State engine\IntroState.h"
+#include "..\\State engine\Include\Game.h"
+#include "..\\State engine\Include\IntroState.h"
 Game::Game(int width, int height, std::string title)
 {
 	data->window.create(sf::VideoMode(width,height),title);

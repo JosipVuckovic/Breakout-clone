@@ -20,10 +20,10 @@ void IntroState::Init()
 
 void IntroState::HandleInput()
 {
-	sf::Event Tetris;
-	while (data->window.pollEvent(Tetris))
+	sf::Event Event;
+	while (data->window.pollEvent(Event))
 	{
-		if (sf::Event::Closed == Tetris.type)
+		if (sf::Event::Closed == Event.type)
 		{
 			data->window.close();
 		}

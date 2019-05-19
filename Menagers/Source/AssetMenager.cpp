@@ -9,27 +9,39 @@ AssetMenager::~AssetMenager()
 {
 }
 
-void AssetMenager::LoadInitParameters(const std::string& filename)
+void AssetMenager::LoadTexture(std::string name, std::string fileName)
 {
-	tinyxml2::XMLDocument doc;
-	doc.LoadFile(filename.c_str());
-	if(doc.ErrorID)
+	sf::Texture text;
+	try
 	{
-		throw X();
+		text.loadFromFile(fileName);
+		_mapTexture[name] = text;
 	}
-	tinyxml2::XMLElement* el = doc.FirstChildElement("Menustate");
+	catch (X& x)
+	{
+		x.err();
+	}
+	
 }
 
-void AssetMenager::LoadBrickTextures(tinyxml2::XMLElement* file, BrickTypes type)
+void AssetMenager::LoadFont(std::string name, std::string fileName)
 {
-	const char* texture;
-	tinyxml2::XMLElement* xmlBricks = file->FirstChildElement("MenuState");
+	sf::Font font;
+	try
+	{
+		font.loadFromFile(fileName);
+		_mapFonts[name] = font;
 
+	}
+	catch (X& x)
+	{
+		x.err();
+	}
 }
 
 
 sf::Texture& AssetMenager::GetTexture(const std::string& name)
-{
+{ 
 	return _mapTexture.at(name);
 }
 

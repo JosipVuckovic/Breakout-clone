@@ -6,11 +6,10 @@
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
-#include "..\\TinyXml\tinyxml2.h"
+
 
 class X { public: void err() { std::cout << "Unable to load file"; } };
 
-enum BrickTypes{brick1, brick2, brick3, brick4};
 class AssetMenager
 {
 	std::map<std::string, sf::Texture> _mapTexture;
@@ -19,8 +18,8 @@ public:
 	AssetMenager();
 	~AssetMenager();
 
-	void LoadInitParameters(const std::string& filename);
-	void LoadBrickTextures(tinyxml2::XMLElement* file, BrickTypes type);
+	void LoadTexture(std::string name, std::string fileName);
+	void LoadFont(std::string name, std::string fileName);
 	sf::Texture& GetTexture(const std::string& name);
 	sf::Font& GetFont(const std::string& name);
 };

@@ -2,16 +2,18 @@
 #define Definitions_H
 
 
-#define SCREEN_WIDTH 384
-#define SCREEN_HEIGHT 512
+#define SCREEN_WIDTH 720
+#define SCREEN_HEIGHT 450
+
 
 #define INIT_STATE_SHOW_TIME 3.0f
-#define INIT_STATE_BACKGROUND "data/image/initState.png"
+#define BACKGROUND "IMG/background.jpg"
 
-#define TILES_PNG "data/image/tiles.png"
-#define PLAY_BUTTON "data/image/PlayButton.png"
-#define BOARD_SPRITE "data/image/board.png"
-#define PIECE_TEXTURE "data/image/tiles.png"
 
-#define XML_INIT_LOAD "data/Menu_file.xml"
+// BLOCKS
+#define BLUE "IMG/blue.png"
+#define GREEN "IMG/green.png"
+#define CYAN "IMG/cyan.png"
+#define RED "IMG/red.png"
+
 #endif
