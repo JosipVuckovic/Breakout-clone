@@ -69,44 +69,31 @@ void AssetMenager::LoadBricks(tinyxml2::XMLElement* element)
 	BrickType = BrickType->FirstChildElement("BrickType");
 	sf::Texture texture;
 	const char* path = "";
+	const char* name = "";
 
-
-	BrickType->QueryStringAttribute("Texture", &path);
-	texture.loadFromFile(path);
-	_mapTexture["Red"] = texture;
-	BrickType = BrickType->NextSiblingElement("BrickType");
-
-
-	BrickType->QueryStringAttribute("Texture", &path);
-	texture.loadFromFile(path);
-	_mapTexture["Blue"] = texture;
-	BrickType = BrickType->NextSiblingElement("BrickType");
-
-
-	BrickType->QueryStringAttribute("Texture", &path);
-	texture.loadFromFile(path);
-	_mapTexture["Green"] = texture;
-	BrickType = BrickType->NextSiblingElement("BrickType");
-
-
-	BrickType->QueryStringAttribute("Texture", &path);
-	texture.loadFromFile(path);
-	_mapTexture["Cyan"] = texture;
-	BrickType = BrickType->NextSiblingElement("MapType");
-
-	const char* BoardString;
-	BrickType->QueryStringAttribute("Map", &BoardString);
-	BoardStr = BoardString;
-	BrickType = BrickType->NextSiblingElement("MapTexture");
-
-
-	BrickType->QueryStringAttribute("MapTexture", &path);
-	texture.loadFromFile(path);
-	_mapTexture["Background"] = texture;
+	for (; BrickType; BrickType = BrickType->NextSiblingElement("BrickType"))
+	{
+		BrickType->QueryStringAttribute("Texture", &path);
+		BrickType->QueryStringAttribute("Name", &name);
+		texture.loadFromFile(path);
+		_mapTexture[name] = texture;
+	}
 
 }
 
 void AssetMenager::LoadBoard(tinyxml2::XMLElement* element)
 {
+	tinyxml2::XMLElement* BrickType = element->FirstChildElement("GameAssets");
+	BrickType = BrickType->FirstChildElement("MapType");
+	sf::Texture texture;
+	const char* path = "";
+	const char* BoardString;
 
+
+	BrickType->QueryStringAttribute("Map", &BoardString);
+	BoardStr = BoardString;
+
+	BrickType->QueryStringAttribute("Texture", &path);
+	texture.loadFromFile(path);
+	_mapTexture["Background"] = texture;
 }

@@ -25,7 +25,11 @@ class Brick
 public:
 
 	Brick(sf::Texture& texture, BrickTypes ID, int i, int j);
+	
+	// used for drawing brick
 	virtual void draw(sf::RenderWindow& window);
+
+	// used for apply polymorf on bricks
 	static std::list<Brick*> Bricks;
 };
 #endif // !BRICK_H

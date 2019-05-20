@@ -8,37 +8,23 @@ GameState::GameState(GameDataRef data): data(data), brickC(new BrickCreator)
 
 }
 
-
 GameState::~GameState()
 {
 }
 
 void GameState::Init()
 {
-	data->assets.LoadTexturesFromXml();
 
-	//data->assets.LoadTexture("Background", BACKGROUND);
-	//data->assets.LoadTexture("RedBlock", RED);
-	//data->assets.LoadTexture("BlueBlock", BLUE);
-	//data->assets.LoadTexture("GreenBlock", GREEN);
-	//data->assets.LoadTexture("CyanBlock", CYAN);
-
+	/*	
+	data->assets.LoadTexture("Background", BACKGROUND);
+	data->assets.LoadTexture("RedBlock", RED);
+	data->assets.LoadTexture("BlueBlock", BLUE);
+	data->assets.LoadTexture("GreenBlock", GREEN);
+	data->assets.LoadTexture("CyanBlock", CYAN);
+	*/
 
 	BackgroundSprite.setTexture(data->assets.GetTexture("Background"));
-
-	brickC->CreateRedBrick(data->assets.GetTexture("Red"), 1);
-	
-	brickC->CreateBlueBrick(data->assets.GetTexture("Blue"), 2);
-	brickC->CreateBlueBrick(data->assets.GetTexture("Blue"), 3);
-
-	brickC->CreateGreenBrick(data->assets.GetTexture("Green"), 4);
-	brickC->CreateGreenBrick(data->assets.GetTexture("Green"), 5);
-	brickC->CreateGreenBrick(data->assets.GetTexture("Green"), 6);
-
-	brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), 7);
-	brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), 8);
-	brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), 9);
-	brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), 10);
+	CreateScene();
 
 }
 
@@ -64,5 +50,33 @@ void GameState::Draw(const float& DeltaTime){
 		i->draw(data->window);
 	data->window.display();
 
+}
+
+void GameState::CreateScene()
+{
+	std::string board(data->assets.GetMap());
+
+	// XML FILE PUTS ' ' in string so you need to remove that! 
+	board.erase(std::remove_if(board.begin(), board.end(), [](char c) {return c == ' '; }), board.end());
+
+	// translate from i=0 to i=1 because i=0 will draw brick outside of a window
+	for( int i = 1; i!=board.length()+1; ++i) 
+	{
+		switch (board[i-1])
+		{
+		case 'R':
+			brickC->CreateRedBrick(data->assets.GetTexture("Red"), i);
+			break;
+		case 'B':
+			brickC->CreateBlueBrick(data->assets.GetTexture("Blue"), i);
+			break;
+		case 'C':
+			brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), i);
+			break;
+		case 'G':
+			brickC->CreateCyanBrick(data->assets.GetTexture("Green"), i);
+			break;
+		};
+	}
 }
 

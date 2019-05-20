@@ -24,5 +24,6 @@ protected:
 	void CreateBlueBrick(sf::Texture& texture, int i, int j);
 	void CreateCyanBrick(sf::Texture& texture, int i, int j);
 	void CreateGreenBrick(sf::Texture& texture, int i, int j);
+	void CreateScene();
 };
 #endif

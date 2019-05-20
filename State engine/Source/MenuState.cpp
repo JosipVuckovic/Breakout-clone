@@ -13,7 +13,7 @@ MenuState::~MenuState()
 
 void MenuState::Init()
 {
-
+	data->assets.LoadTexturesFromXml();
 	//data->assets.LoadTexture("Background", BACKGROUND);
 	backgroundSprite.setTexture(data->assets.GetTexture("Background"));
 }

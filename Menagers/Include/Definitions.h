@@ -15,7 +15,7 @@
 #define GREEN "IMG/green.png"
 #define CYAN "IMG/cyan.png"
 #define RED "IMG/red.png"
-
+#define NUMBER_OF_BRICKS 15
 
 #define XML_FILE "GameDefinition.xml"
 #endif
