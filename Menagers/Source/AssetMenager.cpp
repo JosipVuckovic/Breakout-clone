@@ -9,45 +9,9 @@ AssetMenager::~AssetMenager()
 {
 }
 
-void AssetMenager::LoadTexture(std::string name, std::string fileName)
-{
-	sf::Texture text;
-	try
-	{
-		text.loadFromFile(fileName);
-		_mapTexture[name] = text;
-	}
-	catch (X& x)
-	{
-		x.err();
-	}
-	
-}
-
-void AssetMenager::LoadFont(std::string name, std::string fileName)
-{
-	sf::Font font;
-	try
-	{
-		font.loadFromFile(fileName);
-		_mapFonts[name] = font;
-
-	}
-	catch (X& x)
-	{
-		x.err();
-	}
-}
-
-
 sf::Texture& AssetMenager::GetTexture(const std::string& name)
 { 
 	return _mapTexture.at(name);
-}
-
-sf::Font& AssetMenager::GetFont(const std::string& name)
-{
-	return _mapFonts.at(name);
 }
 
 void AssetMenager::LoadTexturesFromXml()
@@ -55,12 +19,14 @@ void AssetMenager::LoadTexturesFromXml()
 	tinyxml2::XMLDocument doc;
 	doc.LoadFile(XML_FILE);
 
+	
 	if (doc.ErrorID())
 		std::cerr << "Failed to load file!! " << std::endl;
 
 	tinyxml2::XMLElement* start = doc.FirstChildElement("Game");
 	LoadBricks(start);
 	LoadBoard(start);
+	LoadPaddle(start);
 }
 
 void AssetMenager::LoadBricks(tinyxml2::XMLElement* element)
@@ -83,17 +49,32 @@ void AssetMenager::LoadBricks(tinyxml2::XMLElement* element)
 
 void AssetMenager::LoadBoard(tinyxml2::XMLElement* element)
 {
-	tinyxml2::XMLElement* BrickType = element->FirstChildElement("GameAssets");
-	BrickType = BrickType->FirstChildElement("MapType");
+	tinyxml2::XMLElement* GameAssets = element->FirstChildElement("GameAssets");
+	GameAssets = GameAssets->FirstChildElement("MapType");
 	sf::Texture texture;
 	const char* path = "";
 	const char* BoardString;
 
 
-	BrickType->QueryStringAttribute("Map", &BoardString);
+	GameAssets->QueryStringAttribute("Map", &BoardString);
 	BoardStr = BoardString;
 
-	BrickType->QueryStringAttribute("Texture", &path);
+	GameAssets->QueryStringAttribute("Texture", &path);
 	texture.loadFromFile(path);
 	_mapTexture["Background"] = texture;
+}
+
+void AssetMenager::LoadPaddle(tinyxml2::XMLElement* element)
+{
+	const char* path = "";
+	const char* name = "";
+	sf::Texture texture;
+	tinyxml2::XMLElement* Paddle = element->FirstChildElement("GameAssets");
+	Paddle = Paddle->FirstChildElement("Paddle");
+
+	Paddle->QueryStringAttribute("Texture", &path);
+	Paddle->QueryStringAttribute("Name", &name);
+	texture.loadFromFile(path);
+	_mapTexture[name] = texture;
+
 }

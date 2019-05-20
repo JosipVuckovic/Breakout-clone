@@ -4,6 +4,7 @@
 #include "State.h"
 #include "Game.h"
 #include "BrickCreator.h"
+#include "..\\Game\Include\Paddle.h"
 class GameState :
 	public State
 {
@@ -11,6 +12,7 @@ class GameState :
 	sf::Clock clock;
 	sf::Sprite BackgroundSprite;
 	BrickCreator* brickC;
+	Paddle* paddle;
 public:
 	GameState(GameDataRef data);
 	~GameState();

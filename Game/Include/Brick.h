@@ -29,7 +29,7 @@ public:
 	// used for drawing brick
 	virtual void draw(sf::RenderWindow& window);
 
-	// used for apply polymorf on bricks
+	// used for 
 	static std::list<Brick*> Bricks;
 };
 #endif // !BRICK_H

@@ -6,7 +6,8 @@
     <BrickType Texture="IMG/cyan.png" Name="Cyan" />
     <BrickType Texture="IMG/green.png" Name="Green" />
     <BrickType Texture="IMG/blue.png" Name="Blue"/>
-    <MapType Map="RBGGCC"
-     Texture ="IMG/background.jpg"/>
+    <MapType Map="RBGGCC" Texture ="IMG/background.jpg"/>
+     <Paddle Texture="IMG/paddle.png" Name="Paddle"/>
+     <Ball Texture="IMG/ball.png"/>
   </GameAssets>
 </Game>

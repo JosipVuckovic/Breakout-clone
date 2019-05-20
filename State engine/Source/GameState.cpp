@@ -24,6 +24,7 @@ void GameState::Init()
 	*/
 
 	BackgroundSprite.setTexture(data->assets.GetTexture("Background"));
+	paddle = new Paddle(data->assets.GetTexture("Paddle"));
 	CreateScene();
 
 }
@@ -39,15 +40,19 @@ void GameState::HandleInput()
 }
 void GameState::Update(const float& deltaTime)
 {
-	
+	paddle->UpdateMovement(deltaTime);
 }
 
 void GameState::Draw(const float& DeltaTime){
 
 	data->window.clear();
-	data->window.draw(BackgroundSprite);
+	/*data->window.draw(BackgroundSprite);
+
 	for (auto i : Brick::Bricks)
-		i->draw(data->window);
+		i->draw(data->window);*/
+
+	paddle->Draw(data->window);
+
 	data->window.display();
 
 }
