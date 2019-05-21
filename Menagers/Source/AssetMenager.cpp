@@ -20,10 +20,13 @@ void AssetMenager::LoadTexturesFromXml()
 	doc.LoadFile(XML_FILE);
 
 	
+	//if XML file is't loaded print that error
 	if (doc.ErrorID())
 		std::cerr << "Failed to load file!! " << std::endl;
 
+
 	tinyxml2::XMLElement* start = doc.FirstChildElement("Game");
+	
 	LoadBricks(start);
 	LoadBoard(start);
 	LoadPaddle(start);
@@ -31,12 +34,14 @@ void AssetMenager::LoadTexturesFromXml()
 
 void AssetMenager::LoadBricks(tinyxml2::XMLElement* element)
 {
+	// go on GameAssets position in XML 
 	tinyxml2::XMLElement* BrickType = element->FirstChildElement("GameAssets");
 	BrickType = BrickType->FirstChildElement("BrickType");
 	sf::Texture texture;
 	const char* path = "";
 	const char* name = "";
 
+	// iterate in XML and get out data
 	for (; BrickType; BrickType = BrickType->NextSiblingElement("BrickType"))
 	{
 		BrickType->QueryStringAttribute("Texture", &path);

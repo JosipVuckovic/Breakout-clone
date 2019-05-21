@@ -68,9 +68,6 @@
     <ClInclude Include="Menagers\Include\AssetMenager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menagers\Include\Definitions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="State engine\Include\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -84,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game\Include\Paddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menagers\Include\Definitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

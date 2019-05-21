@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "BrickCreator.h"
 #include "..\\Game\Include\Paddle.h"
+
 class GameState :
 	public State
 {

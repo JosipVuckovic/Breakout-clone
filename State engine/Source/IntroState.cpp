@@ -1,8 +1,7 @@
-
-
 #include "..\\State engine\Include\IntroState.h"
 #include "..\\State engine\Include\MenuState.h"
 #include "..\\Menagers\Include\Definitions.h"
+
 IntroState::IntroState(GameDataRef data): data(data)
 {
 

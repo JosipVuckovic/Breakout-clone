@@ -3,12 +3,8 @@
 #include "..\\Game\Include\Brick.h"
 class BrickCreator
 {
-
 public: 
-
-	void CreateRedBrick(sf::Texture& texture, int row);
-	void CreateBlueBrick(sf::Texture& texture, int row);
-	void CreateGreenBrick(sf::Texture& texture, int row);
-	void CreateCyanBrick(sf::Texture& texture, int row);
+	 /*allocate memory and create bricks on screen */
+	void CreateBrick(sf::Texture& texture, int row, BrickTypes type);
 };
 #endif // !BRICKCREATOR_H

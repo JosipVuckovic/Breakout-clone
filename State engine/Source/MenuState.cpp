@@ -3,6 +3,7 @@
 #include "..\\State engine\Include\GameState.h"
 #include "..\\State engine\Include\MenuState.h"
 #include <iostream>
+
 MenuState::MenuState(GameDataRef data): data(data)
 {
 }
@@ -14,7 +15,6 @@ MenuState::~MenuState()
 void MenuState::Init()
 {
 	data->assets.LoadTexturesFromXml();
-	//data->assets.LoadTexture("Background", BACKGROUND);
 	backgroundSprite.setTexture(data->assets.GetTexture("Background"));
 }
 
@@ -31,9 +31,7 @@ void MenuState::HandleInput()
 	}
 }
 
-void MenuState::Update(const float& deltaTime)
-{
-}
+void MenuState::Update(const float& deltaTime){}
 
 void MenuState::Draw(const float& DeltaTime)
 {

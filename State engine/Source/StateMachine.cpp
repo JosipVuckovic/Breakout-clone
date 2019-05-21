@@ -1,7 +1,5 @@
-
-
 #include "..\\State engine\Include\StateMachine.h"
-StateMachine::StateMachine()
+StateMachine::StateMachine(): isAdding(true), isRemoving(false), isReplacing(true)
 {
 }
 

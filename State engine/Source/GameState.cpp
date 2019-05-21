@@ -46,10 +46,10 @@ void GameState::Update(const float& deltaTime)
 void GameState::Draw(const float& DeltaTime){
 
 	data->window.clear();
-	/*data->window.draw(BackgroundSprite);
+	data->window.draw(BackgroundSprite);
 
 	for (auto i : Brick::Bricks)
-		i->draw(data->window);*/
+		i->draw(data->window);
 
 	paddle->Draw(data->window);
 
@@ -70,16 +70,16 @@ void GameState::CreateScene()
 		switch (board[i-1])
 		{
 		case 'R':
-			brickC->CreateRedBrick(data->assets.GetTexture("Red"), i);
+			brickC->CreateBrick(data->assets.GetTexture("Red"), i, BrickTypes::red);
 			break;
 		case 'B':
-			brickC->CreateBlueBrick(data->assets.GetTexture("Blue"), i);
+			brickC->CreateBrick(data->assets.GetTexture("Blue"), i, BrickTypes::blue);
 			break;
 		case 'C':
-			brickC->CreateCyanBrick(data->assets.GetTexture("Cyan"), i);
+			brickC->CreateBrick(data->assets.GetTexture("Cyan"), i, BrickTypes::cyan);
 			break;
 		case 'G':
-			brickC->CreateCyanBrick(data->assets.GetTexture("Green"), i);
+			brickC->CreateBrick(data->assets.GetTexture("Green"), i, BrickTypes::green);
 			break;
 		};
 	}

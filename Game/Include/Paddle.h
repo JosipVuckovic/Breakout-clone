@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 struct PaddleAssets
 {
+	sf::Texture texture;
 	sf::Vector2f Velocity;
 	sf::Vector2f MovementSpeed;
 	sf::Sprite Paddle;
@@ -10,7 +11,8 @@ struct PaddleAssets
 	sf::FloatRect GlobalBounds;
 	PaddleAssets(sf::Texture texture) : MovementSpeed(0.f, 0.f),Velocity(0.f,0.f), Position(300.f,400.f)
 	{
-		Paddle.setTexture(texture);
+		this->texture = texture;
+		Paddle.setTexture(this->texture);
 		GlobalBounds = this->Paddle.getGlobalBounds();
 		this->Paddle.setPosition(Position);
 	}

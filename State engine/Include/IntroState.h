@@ -2,8 +2,10 @@
 #define INTROSTATE_H
 
 #include <SFML/Graphics.hpp>
+
 #include "Game.h"
 #include "State.h"
+
 class IntroState:
 	public State
 {

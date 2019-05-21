@@ -1,7 +1,7 @@
 #include "..\\Include\Brick.h"
 #include <iostream>
 
-std::list<Brick*> Brick::Bricks;
+std::list<Brick*>Brick::Bricks;
 Brick::Brick(sf::Texture& texture, BrickTypes ID, int i, int j): _BAssets(new BrickAssets(texture, ID))
 {
 	// first set texture then position 
