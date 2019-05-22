@@ -1,11 +1,11 @@
 
 #include "..\\State engine\Include\GameState.h"
 #include "..\\Menagers\Include\Definitions.h"
-
-
-GameState::GameState(GameDataRef data): data(data), brickC(new BrickCreator)
+#include <time.h>
+typedef std::list<Brick*>::iterator iter;
+GameState::GameState(GameDataRef data): data(data)
 {
-
+	std::srand(static_cast<unsigned>(time(NULL)));
 }
 
 GameState::~GameState()
@@ -25,8 +25,9 @@ void GameState::Init()
 
 	BackgroundSprite.setTexture(data->assets.GetTexture("Background"));
 	paddle = new Paddle(data->assets.GetTexture("Paddle"));
+	ball = new Ball(data->assets.GetTexture("Ball"));
 	CreateScene();
-
+	
 }
 
 void GameState::HandleInput()
@@ -40,7 +41,29 @@ void GameState::HandleInput()
 }
 void GameState::Update(const float& deltaTime)
 {
+	sf::FloatRect ballBounds = ball->GetSize();
+	for(iter it= Bricks.begin();it!= Bricks.end(); ++it)
+	{
+		if (ballBounds.intersects((*it)->GetSize()))
+		{
+			(*it)->SetBrickDestroyed();
+			ball->ReverseDirection();
+			break;
+		}
+	}
+
+	if(isCollided(ball->GetSize(), paddle->GetSize()))
+	{
+		int NewBallDir = -(rand() % 5 + 2);
+		ball->SetDirection(NewBallDir);
+	}
 	paddle->UpdateMovement(deltaTime);
+	ball->Update();
+
+
+	Bricks.erase(std::remove_if(Bricks.begin(), Bricks.end(), [&](const Brick* brick) {
+		return brick->IsDestroyed() ? true : false;
+	}), Bricks.end());
 }
 
 void GameState::Draw(const float& DeltaTime){
@@ -48,11 +71,11 @@ void GameState::Draw(const float& DeltaTime){
 	data->window.clear();
 	data->window.draw(BackgroundSprite);
 
-	for (auto i : Brick::Bricks)
+	for (auto i : Bricks)
 		i->draw(data->window);
 
 	paddle->Draw(data->window);
-
+	ball->Draw(data->window);
 	data->window.display();
 
 }
@@ -70,18 +93,27 @@ void GameState::CreateScene()
 		switch (board[i-1])
 		{
 		case 'R':
-			brickC->CreateBrick(data->assets.GetTexture("Red"), i, BrickTypes::red);
+			CreateBrick(data->assets.GetTexture("Red"), i, BrickTypes::red);
 			break;
 		case 'B':
-			brickC->CreateBrick(data->assets.GetTexture("Blue"), i, BrickTypes::blue);
+			CreateBrick(data->assets.GetTexture("Blue"), i, BrickTypes::blue);
 			break;
 		case 'C':
-			brickC->CreateBrick(data->assets.GetTexture("Cyan"), i, BrickTypes::cyan);
+			CreateBrick(data->assets.GetTexture("Cyan"), i, BrickTypes::cyan);
 			break;
 		case 'G':
-			brickC->CreateBrick(data->assets.GetTexture("Green"), i, BrickTypes::green);
+			CreateBrick(data->assets.GetTexture("Green"), i, BrickTypes::green);
 			break;
 		};
+	}
+}
+
+void GameState::CreateBrick(sf::Texture& texture, int row, BrickTypes type)
+{
+	for (int i = 0; i < NUMBER_OF_BRICKS; ++i)
+	{
+		Brick* b = new Brick(texture, type, i, row);
+		Bricks.push_back(b);
 	}
 }
 

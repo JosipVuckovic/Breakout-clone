@@ -10,7 +10,8 @@ struct BallAssets
 	sf::Vector2f Velocity;
 	sf::Vector2f Position;
 	sf::Vector2f Direction;
-	BallAssets(sf::Texture& texture): Velocity(0.f,0.f), Position(500. , 300.f), Direction(5.,6.)
+
+	BallAssets(sf::Texture& texture): Velocity(0.f,0.f), Position(300. , 300.f), Direction(5.,6.)
 	{	
 		this->Texture = texture;
 		BallSprite.setTexture(this->Texture);
@@ -28,7 +29,13 @@ public:
 
 
 	void Move();
-	void Update(const float& deltaTime);
+	void Update();
+	void Draw(sf::RenderWindow& window);
 
+	sf::FloatRect GetSize()const { return _BallAssets->BallSprite.getGlobalBounds(); }
+	void SetDirection(const int& Y_dir) { _BallAssets->Direction.y = (float)Y_dir; }
+	void ReverseDirection() { _BallAssets->Direction = -_BallAssets->Direction; }
+
+	
 };
 #endif // !1

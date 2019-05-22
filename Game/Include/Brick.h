@@ -10,8 +10,10 @@ enum BrickTypes { red, green, blue, cyan, grey };
 struct BrickAssets{
 	sf::Texture texture;
 	sf::Vector2f size;
+	bool isDestroyed;
 	BrickTypes ID;
-	BrickAssets(sf::Texture& texture, BrickTypes ID) : size(42.0f, 20.0f)
+	int row;
+	BrickAssets(sf::Texture& texture, BrickTypes ID) : size(42.0f, 20.0f), isDestroyed(false)
 	{
 		this->texture = texture;
 		this->ID = ID;
@@ -22,7 +24,6 @@ class Brick
 {
 	BrickAssets* _BAssets;
 	sf::Sprite _BrickSprite;
-	int row;
 public:
 
 	Brick(sf::Texture& texture, BrickTypes ID, int i, int j);
@@ -31,6 +32,13 @@ public:
 	virtual void draw(sf::RenderWindow& window);
 
 	// used for polymorf
-	static std::list<Brick*> Bricks;
+
+	sf::FloatRect GetSize()const { return _BrickSprite.getGlobalBounds(); }
+
+
+	void SetBrickDestroyed() { _BAssets->isDestroyed = true; }
+
+	bool IsDestroyed()const { return _BAssets->isDestroyed; }
 };
+
 #endif // !BRICK_H

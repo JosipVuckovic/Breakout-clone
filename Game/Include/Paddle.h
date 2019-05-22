@@ -26,5 +26,8 @@ public:
 	void Draw(sf::RenderWindow& window);
 	void UpdateMovement(const float& deltaTime);
 	void Move(sf::Vector2f velocity);
+
+
+	sf::FloatRect GetSize()const {return _PaddleAssets->Paddle.getGlobalBounds(); }
 };
 #endif // !PADDLE_H

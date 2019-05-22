@@ -155,7 +155,6 @@
     <ClCompile Include="Game\Source\Paddle.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menagers\Source\AssetMenager.cpp" />
-    <ClCompile Include="State engine\Source\BrickCreator.cpp" />
     <ClCompile Include="State engine\Source\Game.cpp" />
     <ClCompile Include="State engine\Source\GameState.cpp" />
     <ClCompile Include="State engine\Source\IntroState.cpp" />
@@ -169,7 +168,6 @@
     <ClInclude Include="Game\Include\Paddle.h" />
     <ClInclude Include="Menagers\Include\AssetMenager.h" />
     <ClInclude Include="Menagers\Include\Definitions.h" />
-    <ClInclude Include="State engine\Include\BrickCreator.h" />
     <ClInclude Include="State engine\Include\Game.h" />
     <ClInclude Include="State engine\Include\GameState.h" />
     <ClInclude Include="State engine\Include\IntroState.h" />

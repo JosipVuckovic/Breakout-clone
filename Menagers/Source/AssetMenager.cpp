@@ -30,6 +30,7 @@ void AssetMenager::LoadTexturesFromXml()
 	LoadBricks(start);
 	LoadBoard(start);
 	LoadPaddle(start);
+	LoadBall(start);
 }
 
 void AssetMenager::LoadBricks(tinyxml2::XMLElement* element)
