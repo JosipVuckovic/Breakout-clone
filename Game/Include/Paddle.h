@@ -28,6 +28,6 @@ public:
 	void Move(sf::Vector2f velocity);
 
 
-	sf::FloatRect GetSize()const {return _PaddleAssets->Paddle.getGlobalBounds(); }
+	sf::FloatRect GetGlobalBounds()const {return _PaddleAssets->Paddle.getGlobalBounds(); }
 };
 #endif // !PADDLE_H

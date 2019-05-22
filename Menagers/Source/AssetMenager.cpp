@@ -35,7 +35,7 @@ void AssetMenager::LoadTexturesFromXml()
 
 void AssetMenager::LoadBricks(tinyxml2::XMLElement* element)
 {
-	// go on GameAssets position in XML 
+	/*set brick assets in map*/
 	tinyxml2::XMLElement* BrickType = element->FirstChildElement("GameAssets");
 	BrickType = BrickType->FirstChildElement("BrickType");
 	sf::Texture texture;
@@ -55,6 +55,7 @@ void AssetMenager::LoadBricks(tinyxml2::XMLElement* element)
 
 void AssetMenager::LoadBoard(tinyxml2::XMLElement* element)
 {
+	/*set board assets in map*/
 	tinyxml2::XMLElement* GameAssets = element->FirstChildElement("GameAssets");
 	GameAssets = GameAssets->FirstChildElement("MapType");
 	sf::Texture texture;
@@ -72,6 +73,7 @@ void AssetMenager::LoadBoard(tinyxml2::XMLElement* element)
 
 void AssetMenager::LoadPaddle(tinyxml2::XMLElement* element)
 {
+	/*set paddle assets in map*/
 	const char* path = "";
 	const char* name = "";
 	sf::Texture texture;
@@ -87,6 +89,8 @@ void AssetMenager::LoadPaddle(tinyxml2::XMLElement* element)
 
 void AssetMenager::LoadBall(tinyxml2::XMLElement* element)
 {
+
+	/* set ball assets in map*/
 	const char* path = "";
 	const char* name = "";
 	sf::Texture texture;

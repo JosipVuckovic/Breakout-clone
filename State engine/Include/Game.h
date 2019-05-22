@@ -25,6 +25,8 @@ class Game
 public:
 	Game(int width, int height, std::string title);
 	~Game();
+
+	// init game 
 	void Run();
 };
 

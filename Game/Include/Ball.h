@@ -32,8 +32,13 @@ public:
 	void Update();
 	void Draw(sf::RenderWindow& window);
 
-	sf::FloatRect GetSize()const { return _BallAssets->BallSprite.getGlobalBounds(); }
+	//get brick global bounds
+	sf::FloatRect GetGlobalBounds()const { return _BallAssets->BallSprite.getGlobalBounds(); }
+
+	// set direction if ball hit paddle
 	void SetDirection(const int& Y_dir) { _BallAssets->Direction.y = (float)Y_dir; }
+
+	//reverse direction if ball hit brick
 	void ReverseDirection() { _BallAssets->Direction = -_BallAssets->Direction; }
 
 	

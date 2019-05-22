@@ -14,7 +14,9 @@ public:
 	MenuState(GameDataRef data);
 	~MenuState();
 
-
+	/*
+		FOR INFO OF THIS METHODS GO INTO STATE.H  
+	*/
 	virtual void Init()override;
 	virtual void HandleInput()override;
 	virtual void Update(const float& deltaTime)override;

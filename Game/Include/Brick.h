@@ -33,11 +33,14 @@ public:
 
 	// used for polymorf
 
-	sf::FloatRect GetSize()const { return _BrickSprite.getGlobalBounds(); }
+	sf::FloatRect GetGlobalBounds()const { return _BrickSprite.getGlobalBounds(); }
 
 
+	//set flag
 	void SetBrickDestroyed() { _BAssets->isDestroyed = true; }
 
+
+	 //look for flag 
 	bool IsDestroyed()const { return _BAssets->isDestroyed; }
 };
 

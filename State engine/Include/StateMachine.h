@@ -15,10 +15,16 @@ class StateMachine
 public:
 	StateMachine();
 	~StateMachine();
+	
 
+	// add state
 	void AddState(StateRef newState, bool isReplacing = true);
+
+	// if you exit state, EG. from menu to game state then remove it
 	void RemoveState();
+
 	void ProcessStateChanges();
+	
 	StateRef& GetActiveState();
 
 };

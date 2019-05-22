@@ -41,29 +41,31 @@ void GameState::HandleInput()
 }
 void GameState::Update(const float& deltaTime)
 {
-	sf::FloatRect ballBounds = ball->GetSize();
-	for(iter it= Bricks.begin();it!= Bricks.end(); ++it)
+	sf::FloatRect ballBounds = ball->GetGlobalBounds();
+	
+	for(auto it: Bricks)
 	{
-		if (ballBounds.intersects((*it)->GetSize()))
-		{
-			(*it)->SetBrickDestroyed();
-			ball->ReverseDirection();
-			break;
-		}
+		if (!isCollided(it->GetGlobalBounds(), ballBounds))
+			continue;
+
+		it->SetBrickDestroyed();
+		ball->ReverseDirection();
+
 	}
 
-	if(isCollided(ball->GetSize(), paddle->GetSize()))
+
+	if(isCollided(ball->GetGlobalBounds(), paddle->GetGlobalBounds()))
 	{
 		int NewBallDir = -(rand() % 5 + 2);
 		ball->SetDirection(NewBallDir);
 	}
+
+
 	paddle->UpdateMovement(deltaTime);
 	ball->Update();
 
-
-	Bricks.erase(std::remove_if(Bricks.begin(), Bricks.end(), [&](const Brick* brick) {
-		return brick->IsDestroyed() ? true : false;
-	}), Bricks.end());
+	
+	UpdateBorad();
 }
 
 void GameState::Draw(const float& DeltaTime){
@@ -73,6 +75,7 @@ void GameState::Draw(const float& DeltaTime){
 
 	for (auto i : Bricks)
 		i->draw(data->window);
+
 
 	paddle->Draw(data->window);
 	ball->Draw(data->window);
@@ -115,5 +118,16 @@ void GameState::CreateBrick(sf::Texture& texture, int row, BrickTypes type)
 		Brick* b = new Brick(texture, type, i, row);
 		Bricks.push_back(b);
 	}
+}
+
+void GameState::UpdateBorad()
+{
+
+	// see flag, if flag is destroyed delete it from list! 
+	Bricks.erase(std::remove_if(Bricks.begin(), Bricks.end(), [&](const Brick* brick) 
+	{
+		return brick->IsDestroyed() ? true : false;
+	}
+	), Bricks.end());
 }
 
