@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Source\Ball.cpp" />
     <ClCompile Include="Game\Source\Brick.cpp" />
     <ClCompile Include="Game\Source\Paddle.cpp" />
     <ClCompile Include="main.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="tinyxml2\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Include\Ball.h" />
     <ClInclude Include="Game\Include\Brick.h" />
     <ClInclude Include="Game\Include\Paddle.h" />
     <ClInclude Include="Menagers\Include\AssetMenager.h" />

@@ -35,6 +35,9 @@ public:
 	//Load Paddle assets from XML file
 	void LoadPaddle(tinyxml2::XMLElement* element);
 
+	void LoadBall(tinyxml2::XMLElement* element);
+
+
 	//string is representing bricks on map
 	std::string GetMap()const { return BoardStr; };
 };

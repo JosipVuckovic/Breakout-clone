@@ -83,3 +83,17 @@ void AssetMenager::LoadPaddle(tinyxml2::XMLElement* element)
 	_mapTexture[name] = texture;
 
 }
+
+void AssetMenager::LoadBall(tinyxml2::XMLElement* element)
+{
+	const char* path = "";
+	const char* name = "";
+	sf::Texture texture;
+	tinyxml2::XMLElement* Ball = element->FirstChildElement("GameAssets");
+	Ball = Ball->FirstChildElement("Ball");
+
+	Ball->QueryStringAttribute("Texture", &path);
+	Ball->QueryStringAttribute("Name", &name);
+	texture.loadFromFile(path);
+	_mapTexture[name] = texture;
+}

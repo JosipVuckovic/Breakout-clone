@@ -8,6 +8,6 @@
     <BrickType Texture="IMG/blue.png" Name="Blue"/>
     <MapType Map="RBGGCC" Texture ="IMG/background.jpg"/>
      <Paddle Texture="IMG/paddle.png" Name="Paddle"/>
-     <Ball Texture="IMG/ball.png"/>
+     <Ball Texture="IMG/ball.png" Name="Ball"/>
   </GameAssets>
 </Game>
