@@ -7,7 +7,10 @@
     <BrickType Texture="IMG/green.png" Name="Green" />
     <BrickType Texture="IMG/blue.png" Name="Blue"/>
     <MapType Map="RBGGCC" Texture ="IMG/background.jpg"/>
-     <Paddle Texture="IMG/paddle.png" Name="Paddle"/>
-     <Ball Texture="IMG/ball.png" Name="Ball"/>
+    <Paddle Texture="IMG/paddle.png" Name="Paddle"/>
+    <Ball Texture="IMG/ball.png" Name="Ball"/>
   </GameAssets>
+  <Level>
+    
+  </Level>
 </Game>

@@ -5,6 +5,7 @@
 
 struct BallAssets
 {
+public:
 	sf::Texture Texture;
 	sf::Sprite BallSprite;
 	sf::Vector2f Velocity;
@@ -17,6 +18,8 @@ struct BallAssets
 		BallSprite.setTexture(this->Texture);
 		BallSprite.setPosition(Position);
 	}
+
+
 };
 
 class Ball
@@ -25,8 +28,6 @@ class Ball
 public:
 	Ball(sf::Texture& texture);
 	~Ball();
-
-
 
 	void Move();
 	void Update();
@@ -41,6 +42,6 @@ public:
 	//reverse direction if ball hit brick
 	void ReverseDirection() { _BallAssets->Direction = -_BallAssets->Direction; }
 
-	
+	sf::Vector2f GetBallPosition()const { return _BallAssets->Position; }
 };
 #endif // !1

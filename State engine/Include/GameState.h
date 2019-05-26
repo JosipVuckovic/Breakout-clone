@@ -7,6 +7,11 @@
 #include "..\\Game\Include\Ball.h"
 #include "..\\Game\Include\brick.h"
 
+/*functional object*/
+
+struct isvalid {
+	bool operator()(const Brick* brick) { return brick->IsDestroyed(); }
+};
 
 class GameState :
 	public State
@@ -16,8 +21,11 @@ class GameState :
 	sf::Sprite BackgroundSprite;
 
 	Paddle* paddle;
-	Ball* ball;
-	std::list<Brick*> Bricks;
+	std::vector<Ball*> balls;
+	std::vector<Brick*> Bricks;
+
+
+	int HitTimes;
 
 public:
 	GameState(GameDataRef data);
@@ -31,11 +39,13 @@ public:
 	virtual void Draw(const float& DeltaTime)override;
 
 private:
-	void CreateRedBrick(sf::Texture& texture, int i, int j);
+
+	void CreateRedBrick(sf::Texture& texture,int i, int j);
 	void CreateBlueBrick(sf::Texture& texture, int i, int j);
 	void CreateCyanBrick(sf::Texture& texture, int i, int j);
 	void CreateGreenBrick(sf::Texture& texture, int i, int j);
 	void CreateScene();
+	void CreateBall();
 
 
 	// universal method for creating bricks
@@ -48,5 +58,9 @@ private:
 
 	// if ball hit brick then erase brick from list
 	void UpdateBorad();
+
+	/*function for constant check is ball under the paddle */
+	void CheckBall();
 };
+
 #endif

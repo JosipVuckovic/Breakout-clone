@@ -2,6 +2,7 @@
 #include "..\\State engine\Include\GameState.h"
 #include "..\\Menagers\Include\Definitions.h"
 #include <time.h>
+#include "..\\State engine\Include\MenuState.h"
 typedef std::list<Brick*>::iterator iter;
 GameState::GameState(GameDataRef data): data(data)
 {
@@ -25,7 +26,7 @@ void GameState::Init()
 
 	BackgroundSprite.setTexture(data->assets.GetTexture("Background"));
 	paddle = new Paddle(data->assets.GetTexture("Paddle"));
-	ball = new Ball(data->assets.GetTexture("Ball"));
+	CreateBall();
 	CreateScene();
 	
 }
@@ -37,48 +38,68 @@ void GameState::HandleInput()
 	{
 		if (sf::Event::Closed == Event.type)
 			data->window.close();
+		if (balls.empty())
+			data->machine.AddState((StateRef)new MenuState(data), true);
 	}
 }
 void GameState::Update(const float& deltaTime)
 {
-	sf::FloatRect ballBounds = ball->GetGlobalBounds();
+	if(balls.size())
+		DeleteBall();
 	
-	for(auto it: Bricks)
+	for (auto i : balls)
 	{
-		if (!isCollided(it->GetGlobalBounds(), ballBounds))
-			continue;
+		sf::FloatRect ballBounds = i->GetGlobalBounds();
 
-		it->SetBrickDestroyed();
-		ball->ReverseDirection();
+		for (auto it : Bricks)
+		{
+			if (!isCollided(it->GetGlobalBounds(), ballBounds))
+				continue;
 
+			it->SetBrickDestroyed();
+			i->ReverseDirection();
+			++HitTimes;
+			break;
+		}
+
+
+
+		if (isCollided(i->GetGlobalBounds(), paddle->GetGlobalBounds()))
+		{
+			int NewBallDir = -(rand() % 5 + 2);
+			i->SetDirection(NewBallDir);
+		}
 	}
-
-
-	if(isCollided(ball->GetGlobalBounds(), paddle->GetGlobalBounds()))
-	{
-		int NewBallDir = -(rand() % 5 + 2);
-		ball->SetDirection(NewBallDir);
-	}
-
 
 	paddle->UpdateMovement(deltaTime);
-	ball->Update();
 
+	if (HitTimes > 5) {
+		CreateBall();
+		HitTimes = 0;
+	}
+
+
+	std::for_each(balls.begin(), balls.end(), [&](Ball* ball) {ball->Update(); });
+	
+	
 	
 	UpdateBorad();
 }
 
-void GameState::Draw(const float& DeltaTime){
+void GameState::Draw(const float& DeltaTime)
+{
 
 	data->window.clear();
 	data->window.draw(BackgroundSprite);
 
-	for (auto i : Bricks)
-		i->draw(data->window);
-
+//draw every brick in vector
+	std::for_each(Bricks.begin(), Bricks.end(), [&](Brick* brick) {brick->draw(data->window); });
 
 	paddle->Draw(data->window);
-	ball->Draw(data->window);
+	
+//draw every ball in vector
+	std::for_each(balls.begin(), balls.end(), [&](Ball* ball) {ball->Draw(data->window); });
+
 	data->window.display();
 
 }
@@ -111,6 +132,11 @@ void GameState::CreateScene()
 	}
 }
 
+void GameState::CreateBall()
+{
+	balls.push_back(new Ball(data->assets.GetTexture("Ball")));
+}
+
 void GameState::CreateBrick(sf::Texture& texture, int row, BrickTypes type)
 {
 	for (int i = 0; i < NUMBER_OF_BRICKS; ++i)
@@ -122,12 +148,22 @@ void GameState::CreateBrick(sf::Texture& texture, int row, BrickTypes type)
 
 void GameState::UpdateBorad()
 {
-
 	// see flag, if flag is destroyed delete it from list! 
-	Bricks.erase(std::remove_if(Bricks.begin(), Bricks.end(), [&](const Brick* brick) 
-	{
-		return brick->IsDestroyed() ? true : false;
-	}
-	), Bricks.end());
+	Bricks.erase(std::remove_if(Bricks.begin(), Bricks.end(), isvalid()), Bricks.end());
 }
 
+void GameState::CheckBall()
+{
+	balls.erase(std::remove_if(balls.begin(), balls.end(),
+
+		[&](Ball* ball) 
+	{
+		sf::Vector2f ballpos = ball->GetBallPosition();
+		if (ballpos.y < paddle->GetPaddlePosition().y+paddle->GetGlobalBounds().height)
+			return false;
+		return true;
+	
+	}
+	
+	), balls.end());
+}

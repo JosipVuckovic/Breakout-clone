@@ -29,5 +29,7 @@ public:
 
 
 	sf::FloatRect GetGlobalBounds()const {return _PaddleAssets->Paddle.getGlobalBounds(); }
+
+	sf::Vector2f GetPaddlePosition()const { return _PaddleAssets->Position; }
 };
 #endif // !PADDLE_H
