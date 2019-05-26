@@ -13,4 +13,6 @@
 #define PADDLE_SPEED 200.0f
 #define BALL_SPEED 100.0f
 #define XML_FILE "GameDefinition.xml"
+
+
 #endif

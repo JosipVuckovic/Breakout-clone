@@ -44,6 +44,9 @@ private:
 	void CreateBlueBrick(sf::Texture& texture, int i, int j);
 	void CreateCyanBrick(sf::Texture& texture, int i, int j);
 	void CreateGreenBrick(sf::Texture& texture, int i, int j);
+
+	void CreateColloredBrick();
+
 	void CreateScene();
 	void CreateBall();
 
@@ -62,5 +65,4 @@ private:
 	/*function for constant check is ball under the paddle */
 	void CheckBall();
 };
-
 #endif
